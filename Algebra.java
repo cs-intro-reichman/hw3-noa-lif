@@ -86,18 +86,27 @@ public class Algebra {
 
     // Returns the integer part of x1 / x2 
     public static int div(int x1, int x2) {
-        int counter = 0;
-        int x2Static = x2;
-        while (x1 >= x2Static) {
-            for (int i = 0; i < x2Static; i++) {
-                x1--;
+        boolean isNegativ = false;
+        if ((x2 < 0 && x1 > 0) || (x2 > 0 && x1 < 0)) {
+            isNegativ = true;
+        }
+        if (isNegativ) {
+            if (x1 < 0) {
+                x1 = times(x1, -1);
             }
+            if (x2 < 0) {
+                x2 = times(x2, -1);
+            }
+        }
+        int counter = 0;
+        while (x1 - times(counter, x2) >= x2) {
             counter++;
         }
+        if(isNegativ){return times(counter, -1);}
         return counter;
     }
-
     // Returns x1 % x2
+
     public static int mod(int x1, int x2) {
         int x2Static = x2;
         while (x1 >= x2Static) {
