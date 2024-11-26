@@ -44,17 +44,30 @@ public class Algebra {
     // Returns x1 * x2
     public static int times(int x1, int x2) {
         int sum = 0;
-        for (int i = 0; i < x1; i++) {
-            for (int j = 0; j < x2; j++) {
-                if ((x2 < 0 && x1 > 0) || (x2 > 0 && x1 < 0)) {
+        int x2Static = x2;
+        int x1Static = x1;
+
+        while (x1 != 0) {
+            x2 = x2Static;
+            while (x2 != 0) {
+                if ((x2Static < 0 && x1Static > 0) || (x2Static > 0 && x1Static < 0)) {
                     sum--;
                 } else {
                     sum++;
                 }
+                if (x2 < 0) {
+                    x2++;
+                } else {
+                    x2--;
+                }
+            }
+            if (x1 < 0) {
+                x1++;
+            } else {
+                x1--;
             }
         }
         return sum;
-
     }
 
     // Returns x^n (for n >= 0)
@@ -64,7 +77,7 @@ public class Algebra {
         }
         var result = 1;
 
-        while (n != 0) {
+        while (n > 0) {
             result = times(result, x);
             n--;
         }
