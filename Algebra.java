@@ -118,14 +118,17 @@ public class Algebra {
 
     // Returns the integer part of sqrt(x) 
     public static int sqrt(int x) {
-        int result = 0;
+        int root = 0;
         int square = 0;
 
         while (square < x) {
-            result++;
-            square = times(result, result);
+            root++;
+            square = times(root, root);
+        }
+        if (square > x) {
+            return root--;
         }
 
-        return result;
+        return root;
     }
 }
