@@ -102,19 +102,18 @@ public class Algebra {
         while (x1 - times(counter, x2) >= x2) {
             counter++;
         }
-        if(isNegativ){return times(counter, -1);}
+        if (isNegativ) {
+            return times(counter, -1);
+        }
         return counter;
     }
     // Returns x1 % x2
 
     public static int mod(int x1, int x2) {
-        int x2Static = x2;
-        while (x1 >= x2Static) {
-            for (int i = 0; i < x2Static; i++) {
-                x1--;
-            }
-        }
-        return x1;
+        int divider = div(x1, x2);
+        int module = x1 - times(divider, x2);
+
+        return module;
     }
 
     // Returns the integer part of sqrt(x) 
