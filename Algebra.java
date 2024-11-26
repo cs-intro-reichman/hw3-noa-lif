@@ -44,7 +44,10 @@ public class Algebra {
     // Returns x1 * x2
     public static int times(int x1, int x2) {
         boolean negative = false;
-        if (x1 * x2 < 0) {
+        if (x1 < 0 && x2 > 0) {
+            negative = true;
+        }
+        if (x1 > 0 && x2 < 0) {
             negative = true;
         }
         if (x1 < 0) {
@@ -58,7 +61,6 @@ public class Algebra {
             for (int j = 0; j < x2; j++) {
                 sum++;
             }
-    
         }
         if (negative) {
             return -x1;
