@@ -90,14 +90,14 @@ public class Algebra {
         if ((x2 < 0 && x1 > 0) || (x2 > 0 && x1 < 0)) {
             isNegativ = true;
         }
-        if (isNegativ) {
-            if (x1 < 0) {
-                x1 = times(x1, -1);
-            }
-            if (x2 < 0) {
-                x2 = times(x2, -1);
-            }
+
+        if (x1 < 0) {
+            x1 = times(x1, -1);
         }
+        if (x2 < 0) {
+            x2 = times(x2, -1);
+        }
+
         int counter = 0;
         while (x1 - times(counter, x2) >= x2) {
             counter++;
@@ -126,7 +126,8 @@ public class Algebra {
             square = times(root, root);
         }
         if (square > x) {
-            return root--;
+            root--;
+            return root;
         }
 
         return root;
