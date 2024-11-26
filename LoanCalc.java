@@ -38,10 +38,12 @@ public class LoanCalc {
     // interest rate (as a percentage), the number of periods (n), and the periodical payment.
     private static double endBalance(double loan, double rate, int n, double payment) {
         double balance = loan;
+        iterationCounter=0;
         while (n > 0) {
             balance -= payment;
             balance *= (1 + (rate / 100));
             n--;
+            iterationCounter++;
         }
         return balance;
     }
@@ -52,11 +54,13 @@ public class LoanCalc {
     // the number of periods (n), and epsilon, the approximation's accuracy
     // Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
+        iterationCounter=0;
         double balance = loan;
         double payment = loan/n;
         while (balance > epsilon) {
             balance = endBalance(loan, rate, n, payment);
             payment+=(n*epsilon);
+            iterationCounter++;
         }
         return payment-(n*epsilon);
     }
