@@ -67,7 +67,7 @@ public class Anagram {
         String newStr = "";
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
-            if (Character.isLetter(c) || c == ' ') {
+            if (Character.isLetter(c) || c == ' ' || Character.isDigit(c)) {
                 newStr = newStr + c;
             }
         }
@@ -77,8 +77,15 @@ public class Anagram {
     // Returns a random anagram of the given string. The random anagram consists of the same
     // characters as the given string, re-arranged in a random order. 
     public static String randomAnagram(String str) {
+        String newStr = "";
+        int strLength = str.length();
+        for (int i = 0; i < strLength; i++) {
+            int charIndex = (int)( Math.random() * str.length());
+            char ch = str.charAt(charIndex);
+            str = str.substring(0, charIndex)+ str.substring(charIndex+1);
+            newStr+=ch;
+        }
+        return newStr;
 
-		return "";
-        
     }
 }
